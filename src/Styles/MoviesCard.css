@@ -1,0 +1,62 @@
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.Card {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 1rem;
+  margin-top: 1.3rem;
+  font-weight: 500;
+}
+
+.text-title {
+  font-size: 25px;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-content {
+  background-color: #fdfdfd;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.custom-modal-dialog {
+  max-width: 100%;
+  margin: 1rem auto;
+}
+
+.custom-modal-header {
+  background-color: #032541;
+  color: #fff;
+  border-bottom: none;
+}
+
+.custom-modal-footer {
+  background-color: #032541;
+  border-top: none;
+}
+
+.custom-modal-close-button {
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.custom-modal-close-button:hover {
+  color: #ccc;
+}/*# sourceMappingURL=MoviesCard.css.map */

@@ -1,0 +1,73 @@
+@import "./Navbar.scss";
+
+.landing {
+  background: linear-gradient(#004a6c91, #004a6c7b),
+    url(../assets/bg2.jpg);
+  background-size: cover;
+  height: calc(100vh / 2.5);
+  min-height: 300px;
+  max-height: 360px;
+  background-position-y: -55px;
+  padding: 3rem;
+
+  h1 {
+    color: #fff;
+  }
+  h3 {
+    color: #fff;
+    margin-top: 1rem;
+  }
+}
+
+.search-input {
+  width: 100%;
+  margin-top: 3rem;
+  position: relative;
+  .search-bar {
+    width: 100%;
+    height: 46px;
+    padding: 1.2rem;
+    border-radius: 40px;
+    outline: none;
+    border: none;
+  }
+  .search-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 46px;
+    padding: 10px 26px;
+    border: none;
+    border-radius: 30px;
+    position: absolute;
+    top: 0;
+    right: -1px;
+    color: #fff;
+    background: linear-gradient(to right, #1bd2af, #04b8dc);
+    &:hover {
+      color: #090909;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px){
+    .search-input{
+        font-size: 1rem;
+        margin-top: 3rem;
+        input{
+            font-size: 14px;
+        }
+    }
+    .landing{
+        text-align: center;
+        background-position-y: -1px;
+        background-position-x: -5rem;
+        h1{
+            font-size: 2rem;
+        }
+        h3{
+            font-size: 1.3rem;
+        }
+    }
+}
