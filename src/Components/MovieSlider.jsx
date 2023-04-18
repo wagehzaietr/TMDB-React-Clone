@@ -10,6 +10,11 @@ const MovieSlider = () => {
     speed: 700,
     slidesToShow: 8,
     slidesToScroll: 5,
+    autoplay: true,
+    autoplaySpeed: 5000,
+    cssEase: "ease-in-out",
+
+
     responsive: [
       {
         breakpoint: 1024,
@@ -22,15 +27,15 @@ const MovieSlider = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: 3,
+          slidesToScroll: 3,
           initialSlide: 2,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },

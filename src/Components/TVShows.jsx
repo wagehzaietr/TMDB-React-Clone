@@ -19,7 +19,6 @@ const TVShows = () => {
       const response = await fetch(TV_SHOWS_API);
       const data = await response.json();
       setShows(data.results);
-      console.log(data.results);
     };
 
     fetchTVShows();
@@ -30,6 +29,10 @@ const TVShows = () => {
     speed: 700,
     slidesToShow: 8,
     slidesToScroll: 5,
+    autoplay: true,
+    autoplaySpeed: 6000,
+    cssEase: "ease-in-out",
+
     responsive: [
       {
         breakpoint: 1024,
@@ -50,7 +53,7 @@ const TVShows = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
