@@ -8,12 +8,15 @@ import {
   Loader,
   MovieSlider,
   Footer,
+  LoginPage
 } from "./index";
 import "./App.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import MainLanding from "./Components/MainLanding";
+import { auth } from "./Firebase/Firebase";
 const API_URL =
   "https://api.themoviedb.org/3/movie/popular?api_key=46636ef69c97ede39b4c71a2b305ef92";
 
@@ -24,6 +27,23 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [user, setUser] = useState(false);
+
+  useEffect(() => {
+    // Listen for auth state changes
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        console.log(user);
+        setUser(user);
+      } else {
+        // No user is signed in
+        setUser(null);
+      }
+    });
+
+    // Unsubscribe from the listener when component unmounts
+    return unsubscribe;
+  }, [auth]);
 
   const searchMovies = async () => {
     const response = await fetch(
@@ -71,13 +91,20 @@ const App = () => {
         }}
       >
         <Navbar />
-        <MainPage />
-        {loading ? <Loader /> : <MovieSlider />}
-        <TVShows />
+        <Routes>
+          <Route path="/" element={<MainLanding />}/>
+          <Route path="/login" element={<LoginPage />}/>
+        </Routes>
         <Footer />
       </SearchMoviesContext.Provider>
     </>
   );
 };
+{
+  /* <MainPage />
+{loading ? <Loader /> : <MovieSlider />}
+<TVShows />
+<Link to="/">hey</Link> */
+}
 
 export default App;

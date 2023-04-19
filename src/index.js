@@ -7,3 +7,4 @@ export { default as ShowsCard } from "./Components/ShowsCard";
 export { default as TVShows } from "./Components/TVShows";
 export { default as MovieSlider } from "./Components/MovieSlider";
 export { default as Footer } from "./Components/Footer";
+export {default as LoginPage} from './pages/LoginPage'

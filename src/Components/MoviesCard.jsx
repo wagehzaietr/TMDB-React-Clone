@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../Styles/MoviesCard.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 import { Modal } from "react-bootstrap";
-
+import { auth } from "../Firebase/Firebase";
 const API_IMG = "https://image.tmdb.org/t/p/w500/";
 
 const MoviesCard = ({
@@ -18,6 +18,23 @@ const MoviesCard = ({
   overview,
 }) => {
   const [showModal, setShowModal] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Listen for auth state changes
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in
+        setUser(user);
+      } else {
+        // No user is signed in
+        setUser(null);
+      }
+    });
+
+    // Unsubscribe from the listener when component unmounts
+    return unsubscribe;
+  }, []);
 
   const handleClick = () => {
     setShowModal(true);
