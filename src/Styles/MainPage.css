@@ -12,6 +12,10 @@
   gap: 2rem;
   margin-top: 15px;
 }
+.navbar .link {
+  color: #FFF;
+  text-decoration: none;
+}
 .navbar .logo {
   height: 56px;
   width: 160px;
@@ -66,15 +70,41 @@
   transition: 0.6s ease-in-out;
 }
 
-.circle {
-  width: 30px;
-  height: 30px;
-  transform: scale(1);
-  background: #805be7;
-  padding: 3px;
-  text-align: center;
-  border-radius: 50%;
-  margin: 1rem;
+.login-btn {
+  width: 15%;
+  background: linear-gradient(45deg, #01b4e4, #88cca5);
+  padding: 7px 1px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  transition: 0.5s ease-in-out;
+  color: #FFF;
+}
+
+.login-btn:hover {
+  color: #032541;
+}
+
+.user-email {
+  position: absolute;
+  left: 3.6rem;
+  top: 5.2rem;
+}
+
+.login-mobile {
+  width: 100%;
+  margin-top: 1rem;
+  position: relative;
+  left: 3.5rem;
+  background: linear-gradient(45deg, #01b4e4, #88cca5);
+  padding: 10px 1px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  transition: 0.5s ease-in-out;
+}
+.login-mobile p {
+  color: white;
 }
 
 .notif {
@@ -103,6 +133,11 @@
   font-weight: 700;
 }
 
+.link-mobile {
+  text-decoration: none;
+  color: white;
+}
+
 .mobile-nav {
   display: none;
   align-items: center;
@@ -122,7 +157,6 @@
   color: #fff;
   left: -100%;
   position: fixed;
-  left: -100%;
   padding: 1rem;
   background: #032541;
   z-index: 999;
@@ -135,7 +169,7 @@
 }
 .nav-items ul {
   position: relative;
-  bottom: 15rem;
+  bottom: 12rem;
   right: 5rem;
 }
 

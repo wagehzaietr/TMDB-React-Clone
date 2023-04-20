@@ -28,6 +28,7 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [user, setUser] = useState(false);
+  const [userData, setUserData] = useState([])
 
   useEffect(() => {
     // Listen for auth state changes
@@ -35,6 +36,7 @@ const App = () => {
       if (user) {
         console.log(user);
         setUser(user);
+        setUserData(user)
       } else {
         // No user is signed in
         setUser(null);
@@ -88,6 +90,9 @@ const App = () => {
           handleSearchInputChange,
           handleSearchFormSubmit,
           SeacrhMovies,
+          user,
+          userData,
+          setLoading,
         }}
       >
         <Navbar />
@@ -95,16 +100,10 @@ const App = () => {
           <Route path="/" element={<MainLanding />}/>
           <Route path="/login" element={<LoginPage />}/>
         </Routes>
-        <Footer />
+        <Footer {...userData} />
       </SearchMoviesContext.Provider>
     </>
   );
 };
-{
-  /* <MainPage />
-{loading ? <Loader /> : <MovieSlider />}
-<TVShows />
-<Link to="/">hey</Link> */
-}
 
 export default App;

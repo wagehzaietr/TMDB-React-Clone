@@ -10,7 +10,8 @@ import { SearchMoviesContext } from "../App";
 import { Link } from "react-router-dom";
 import { auth } from "../Firebase/Firebase";
 import { useNavigate } from "react-router-dom";
-
+import { HiOutlineLogout } from "react-icons/hi";
+import { FiLogIn } from "react-icons/fi";
 
 const Navbar = () => {
   const searchMoviesContext = useContext(SearchMoviesContext);
@@ -23,6 +24,9 @@ const Navbar = () => {
     searchResults,
     handleSearchIconClick,
     SeacrhMovies,
+    userData,
+    setLoading,
+    loading,
   } = searchMoviesContext;
   const [isOpen, setIsOpen] = useState(false);
   const [sidenav, setsidenav] = useState(false);
@@ -32,10 +36,9 @@ const Navbar = () => {
     // Listen for auth state changes
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log(user);
         setUser(user);
       } else {
-        navigate("/login")
+        navigate("/");
         setUser(false);
       }
     });
@@ -46,6 +49,8 @@ const Navbar = () => {
 
   const handleLogout = () => {
     auth.signOut();
+    setsidenav(false);
+    window.location.reload();
   };
 
   const toggleSidebar = () => {
@@ -76,8 +81,8 @@ const Navbar = () => {
           <button className="btn">EN</button>
           <IoIosNotifications className="notif" />
           {user ? (
-            <button className="login-btn" onClick={handleLogout}>
-              Logout
+            <button onClick={handleLogout} className="login-btn">
+              <HiOutlineLogout size={24} color="#e8e8e8" />
             </button>
           ) : (
             <button className="login-btn">
@@ -115,11 +120,36 @@ const Navbar = () => {
         ) : (
           <AiOutlineMenu onClick={toggleSidebar} className="active-menu" />
         )}
-        <img src={Logo} alt="" width="150px" />
+        <Link to="/">
+          <img src={Logo} alt="" width="150px" />
+        </Link>
       </div>
       <div className={sidenav ? "nav-items active" : "nav-items"}>
         <ul>
-          <li>Movies</li>
+          <li>
+            {user ? (
+              <button className="login-mobile" onClick={handleLogout}>
+                <HiOutlineLogout size={30} color="#fff" />
+              </button>
+            ) : (
+              <button className="login-mobile">
+                <Link
+                  to="/login"
+                  className="link-mobile"
+                  onClick={() => setsidenav(false)}
+                >
+                  Login
+                </Link>
+              </button>
+            )}
+          </li>
+          <Link
+            to="/"
+            className="link-mobile"
+            onClick={() => setsidenav(false)}
+          >
+            <li>Movies</li>
+          </Link>
           <li>TVShows</li>
           <li>People</li>
           <li>More</li>

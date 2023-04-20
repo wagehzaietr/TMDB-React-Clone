@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import "../Styles/Footer.css";
 import footerlogo from "../assets/footerlogo.svg";
 import Wave from 'react-wavify'
-
+import { SearchMoviesContext } from "../App";
 
 const Footer = () => {
+  const {user,userData} = useContext(SearchMoviesContext)
   return (
     <>
      <Wave fill='#032541'
@@ -23,7 +24,7 @@ const Footer = () => {
             <div className="col-md-4">
               <div className="footer-logo">
                 <img src={footerlogo} alt="logo" />
-                <button className="footer-btn">Hi user!</button>
+                <button className="footer-btn">Hi {userData.email}</button>
               </div>
             </div>
             <div className="col-md-3">
